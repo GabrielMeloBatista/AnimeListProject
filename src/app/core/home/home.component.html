@@ -1,14 +1,10 @@
 <mat-toolbar class="mat-elevation-z8">
   <button
     mat-icon-button
-    *ngIf="sidenav.mode === 'over'"
+
     (click)="sidenav.toggle()"
   >
-    <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
-    <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
-  </button>
-  <button mat-icon-button routerLink="/" >
-    <mat-icon> home </mat-icon>
+    <mat-icon> menu </mat-icon>
   </button>
   <a href="/" class="link-mal-logo">!MyAnimeList.net</a>
 </mat-toolbar>
@@ -16,17 +12,36 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
 
+    <!--
     <button mat-button class="menu-button" routerLink="/">
-      <mat-icon>home</mat-icon>
-      <span>Home</span>
+      *<mat-icon>home</mat-icon>
+      *<span>Home</span>
     </button>
+    -->
+
     <button mat-button class="menu-button" routerLink="/anime">
-      <mat-icon>person</mat-icon>
+      <mat-icon>theaters</mat-icon>
       <span>Anime</span>
     </button>
-    <button mat-button class="menu-button" routerLink="/about">
-      <mat-icon>info</mat-icon>
-      <span>About</span>
+    <button mat-button class="menu-button" routerLink="/manga">
+      <mat-icon>book</mat-icon>
+      <span>Manga</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="/community">
+      <mat-icon>group</mat-icon>
+      <span>Community</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="/industry">
+      <mat-icon>fastfood</mat-icon>
+      <span>Industry</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="/Watch">
+      <mat-icon>4k</mat-icon>
+      <span>Watch</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="/Watch">
+      <mat-icon>question_answer</mat-icon>
+      <span>Read</span>
     </button>
 
     <mat-divider></mat-divider>
