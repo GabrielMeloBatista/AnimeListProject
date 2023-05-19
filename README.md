@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
@@ -25,3 +25,15 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Description
+
+[myAnimeList](https://myanimelist.net) is the world's most active online anime and manga community, for this reason [I](https://github.com/gabrielMeloBatista/) decided to make a cheap copy using angular.
+
+## Backend
+
+In case you need the [backend](https://github.com/GabrielMeloBatista/OutraAtividadeo) for some reason, probably me looking for the backend in the future.
+
+## !!!Important!!!
+
+As you can probably see, I'm still learning how to Program, and this is just for learning purposes.
