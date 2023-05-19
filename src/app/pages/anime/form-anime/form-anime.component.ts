@@ -29,7 +29,6 @@ export class FormAnimeComponent {
     this.formGroup = this.formBuilder.group({
       nome: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
       dataDeLancamento: [new Date(), Validators.required],
-      status: [null, Validators.required],
       tipoAnime: [null, Validators.required],
       generoID: [null, Validators.required],
     });
@@ -47,7 +46,7 @@ export class FormAnimeComponent {
           alert("Erro ao incluir!");
         })
     }
-
+    console.log(this.formGroup.valid)
   }
 
   public handleError = (controlName: string, errorName: string) => {
