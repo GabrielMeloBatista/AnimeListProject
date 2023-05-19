@@ -7,6 +7,7 @@ import {
 } from "../../../core/confirmation-dialog/confirmation-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
 import {AnimeControllerService} from "../../../api/services/anime-controller.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-form-anime',
@@ -17,6 +18,7 @@ export class FormAnimeComponent {
   formGroup!: FormGroup;
 
   constructor(
+    private router: Router,
     private formBuilder: FormBuilder,
     private _adapter: DateAdapter<any>,
     public animeService: AnimeControllerService,
@@ -41,6 +43,7 @@ export class FormAnimeComponent {
         .subscribe( retorno =>{
           console.log("Retorno:",retorno);
         this.confirmarInclusao(retorno);
+        this.router.navigate(["/anime"]);
       }, erro =>{
           console.log("Erro:"+erro);
           alert("Erro ao incluir!");
