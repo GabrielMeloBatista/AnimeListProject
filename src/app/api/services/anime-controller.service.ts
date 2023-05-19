@@ -40,7 +40,7 @@ export class AnimeControllerService extends BaseService {
   },
   context?: HttpContext
 
-): Observable<StrictHttpResponse<AnimeDto>> {
+): Observable<StrictHttpResponse<any>> {
 
     const rb = new RequestBuilder(this.rootUrl, AnimeControllerService.ObterPorIdPath, 'get');
     if (params) {
@@ -48,13 +48,13 @@ export class AnimeControllerService extends BaseService {
     }
 
     return this.http.request(rb.build({
-      responseType: 'blob',
-      accept: '*/*',
+      responseType: 'json',
+      accept: 'application/json',
       context: context
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<AnimeDto>;
+        return r as StrictHttpResponse<any>;
       })
     );
   }
@@ -72,10 +72,10 @@ export class AnimeControllerService extends BaseService {
   },
   context?: HttpContext
 
-): Observable<AnimeDto> {
+): Observable<any> {
 
     return this.obterPorId$Response(params,context).pipe(
-      map((r: StrictHttpResponse<AnimeDto>) => r.body as AnimeDto)
+      map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }
 
@@ -98,7 +98,7 @@ export class AnimeControllerService extends BaseService {
   },
   context?: HttpContext
 
-): Observable<StrictHttpResponse<AnimeDto>> {
+): Observable<StrictHttpResponse<string>> {
 
     const rb = new RequestBuilder(this.rootUrl, AnimeControllerService.AlterarPath, 'put');
     if (params) {
@@ -107,13 +107,13 @@ export class AnimeControllerService extends BaseService {
     }
 
     return this.http.request(rb.build({
-      responseType: 'blob',
-      accept: '*/*',
+      responseType: 'json',
+      accept: 'application/json',
       context: context
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<AnimeDto>;
+        return r as StrictHttpResponse<string>;
       })
     );
   }
@@ -132,10 +132,10 @@ export class AnimeControllerService extends BaseService {
   },
   context?: HttpContext
 
-): Observable<AnimeDto> {
+): Observable<string> {
 
     return this.alterar$Response(params,context).pipe(
-      map((r: StrictHttpResponse<AnimeDto>) => r.body as AnimeDto)
+      map((r: StrictHttpResponse<string>) => r.body as string)
     );
   }
 
@@ -157,7 +157,7 @@ export class AnimeControllerService extends BaseService {
   },
   context?: HttpContext
 
-): Observable<StrictHttpResponse<AnimeDto>> {
+): Observable<StrictHttpResponse<any>> {
 
     const rb = new RequestBuilder(this.rootUrl, AnimeControllerService.RemoverPath, 'delete');
     if (params) {
@@ -165,13 +165,13 @@ export class AnimeControllerService extends BaseService {
     }
 
     return this.http.request(rb.build({
-      responseType: 'blob',
-      accept: '*/*',
+      responseType: 'json',
+      accept: 'application/json',
       context: context
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<AnimeDto>;
+        return r as StrictHttpResponse<any>;
       })
     );
   }
@@ -189,10 +189,10 @@ export class AnimeControllerService extends BaseService {
   },
   context?: HttpContext
 
-): Observable<AnimeDto> {
+): Observable<any> {
 
     return this.remover$Response(params,context).pipe(
-      map((r: StrictHttpResponse<AnimeDto>) => r.body as AnimeDto)
+      map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }
 
@@ -213,20 +213,20 @@ export class AnimeControllerService extends BaseService {
   },
   context?: HttpContext
 
-): Observable<StrictHttpResponse<Array<AnimeDto>>> {
+): Observable<StrictHttpResponse<any>> {
 
     const rb = new RequestBuilder(this.rootUrl, AnimeControllerService.ListAllPath, 'get');
     if (params) {
     }
 
     return this.http.request(rb.build({
-      responseType: 'blob',
-      accept: '*/*',
+      responseType: 'json',
+      accept: 'application/json',
       context: context
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<Array<AnimeDto>>;
+        return r as StrictHttpResponse<any>;
       })
     );
   }
@@ -243,10 +243,10 @@ export class AnimeControllerService extends BaseService {
   },
   context?: HttpContext
 
-): Observable<Array<AnimeDto>> {
+): Observable<any> {
 
     return this.listAll$Response(params,context).pipe(
-      map((r: StrictHttpResponse<Array<AnimeDto>>) => r.body as Array<AnimeDto>)
+      map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }
 
@@ -268,7 +268,7 @@ export class AnimeControllerService extends BaseService {
   },
   context?: HttpContext
 
-): Observable<StrictHttpResponse<AnimeDto>> {
+): Observable<StrictHttpResponse<any>> {
 
     const rb = new RequestBuilder(this.rootUrl, AnimeControllerService.IncluirPath, 'post');
     if (params) {
@@ -276,13 +276,13 @@ export class AnimeControllerService extends BaseService {
     }
 
     return this.http.request(rb.build({
-      responseType: 'blob',
-      accept: '*/*',
+      responseType: 'json',
+      accept: 'application/json',
       context: context
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<AnimeDto>;
+        return r as StrictHttpResponse<any>;
       })
     );
   }
@@ -300,10 +300,10 @@ export class AnimeControllerService extends BaseService {
   },
   context?: HttpContext
 
-): Observable<AnimeDto> {
+): Observable<any> {
 
     return this.incluir$Response(params,context).pipe(
-      map((r: StrictHttpResponse<AnimeDto>) => r.body as AnimeDto)
+      map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }
 

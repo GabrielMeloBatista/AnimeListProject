@@ -28,8 +28,10 @@ export class FormAnimeComponent {
   createForm() {
     this.formGroup = this.formBuilder.group({
       nome: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
-      dataCriacao: [new Date(), Validators.required],
+      dataDeLancamento: [new Date(), Validators.required],
       status: [null, Validators.required],
+      tipoAnime: [null, Validators.required],
+      generoID: [null, Validators.required],
     });
   }
 

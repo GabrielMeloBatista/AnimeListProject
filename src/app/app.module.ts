@@ -16,8 +16,11 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatIconModule} from "@angular/material/icon";
 import { ConfirmationDialog } from './core/confirmation-dialog/confirmation-dialog.component';
 import {RouterModule} from "@angular/router";
-import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from "@angular/material/form-field";
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule} from "@angular/material/form-field";
 import {AnimeModule} from "./pages/anime/anime.module"
+import {MatSelectModule} from "@angular/material/select";
+import {MatInputModule} from "@angular/material/input";
+import {MatOptionModule} from "@angular/material/core";
   "" +
 "anime/anime.module";
 
@@ -41,6 +44,10 @@ import {AnimeModule} from "./pages/anime/anime.module"
     MatDividerModule,
     MatDialogModule,
     MatSnackBarModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatOptionModule,
     AnimeModule
   ],
   providers: [
