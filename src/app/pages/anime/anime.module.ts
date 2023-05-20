@@ -16,11 +16,13 @@ import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from "@angular/material/core";
+import { MangaComponent } from '../manga/manga.component';
 @NgModule({
   declarations: [
     ListAnimeComponent,
     HomeAnimeComponent,
-    FormAnimeComponent
+    FormAnimeComponent,
+    MangaComponent
   ],
   imports: [
     CommonModule,

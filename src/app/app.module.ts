@@ -21,6 +21,11 @@ import {AnimeModule} from "./pages/anime/anime.module"
 import {MatSelectModule} from "@angular/material/select";
 import {MatInputModule} from "@angular/material/input";
 import {MatOptionModule} from "@angular/material/core";
+import { CommunityComponent } from './pages/community/community.component';
+import { IndustryComponent } from './pages/industry/industry.component';
+import { WatchComponent } from './pages/watch/watch.component';
+import { ReadComponent } from './pages/read/read.component';
+import { HelpComponent } from './pages/help/help.component';
   "" +
 "anime/anime.module";
 
@@ -28,7 +33,12 @@ import {MatOptionModule} from "@angular/material/core";
   declarations: [
     AppComponent,
     HomeComponent,
-    ConfirmationDialog
+    ConfirmationDialog,
+    CommunityComponent,
+    IndustryComponent,
+    WatchComponent,
+    ReadComponent,
+    HelpComponent
   ],
   imports: [
     BrowserModule,
