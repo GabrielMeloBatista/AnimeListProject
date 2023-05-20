@@ -21,6 +21,10 @@ export const animeRoutes: Routes = [
       {
         path: "novo",
         component: FormAnimeComponent
+      },
+      {
+        path: ":codigo",
+        component: FormAnimeComponent
       }
     ]
   },
