@@ -7,3 +7,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   font-family: 'MyAnimeListTitle';
   src: url('~src/assets/AGRevueCyr Roman Medium.ttf') format('truetype');
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

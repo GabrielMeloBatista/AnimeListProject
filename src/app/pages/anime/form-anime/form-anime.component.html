@@ -1,10 +1,9 @@
-
 <form
   [formGroup]="formGroup"
   (ngSubmit)="onSubmit()"
   class="form"
 >
-  <div class="formTipo">
+  <div class="flex flex-col w-full">
   <mat-form-field>
     <mat-label>Nome</mat-label>
     <input matInput formControlName="nome">
@@ -30,8 +29,11 @@
   <mat-form-field>
     <mat-label>Tipo</mat-label>
     <mat-select formControlName="tipoAnime">
-      <mat-option value="ATIVO">Ativo</mat-option>
-      <mat-option value="INATIVO">Inativo</mat-option>
+      <mat-option value="TV">TV</mat-option>
+      <mat-option value="OVA">OVA</mat-option>
+      <mat-option value="ONA">ONA</mat-option>
+      <mat-option value="Film">Filme</mat-option>
+      <mat-option value="Special">Especial</mat-option>
     </mat-select>
     <mat-error *ngIf="handleError('tipoAnime', 'required')">
       Tipo é obrigatório
@@ -40,8 +42,22 @@
     <mat-form-field>
     <mat-label>Genero</mat-label>
     <mat-select formControlName="generoID">
-      <mat-option value="ATIVO">Ativo</mat-option>
-      <mat-option value="INATIVO">Inativo</mat-option>
+      <mat-option value="Action">Ação</mat-option>
+      <mat-option value="Adventure">Aventura</mat-option>
+      <mat-option value="Comedy">Comédia</mat-option>
+      <mat-option value="Drama">Drama</mat-option>
+      <mat-option value="Ecchi">Ecchi</mat-option>
+      <mat-option value="Fantasia">Fantasia</mat-option>
+      <mat-option value="Harem">Harém</mat-option>
+      <mat-option value="Horror">Horror</mat-option>
+      <mat-option value="Isekai">Isekai</mat-option>
+      <mat-option value="Mecha">Mecha</mat-option>
+      <mat-option value="Mystery">Mistério</mat-option>
+      <mat-option value="Romance">Romance</mat-option>
+      <mat-option value="Shoujo">Shoujo</mat-option>
+      <mat-option value="Shounen">Shounen</mat-option>
+      <mat-option value="Slice-of-Life">Slice of Life</mat-option>
+      <mat-option value="Supernatural">Sobrenatural</mat-option>
     </mat-select>
     <mat-error *ngIf="handleError('generoID', 'required')">
       Genero do anime é obrigatório

@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ListAnimeComponent } from './list-anime/list-anime.component';
 import { HomeAnimeComponent } from './home-anime/home-anime.component';
 import {RouterModule} from "@angular/router";
-import {animeRoutes} from "./anime-routing.module";
+import {animeRoutes} from "./pages-routing.module";
 import {MatCardModule} from "@angular/material/card";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";

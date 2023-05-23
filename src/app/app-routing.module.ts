@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {HomeComponent} from "./core/home/home.component";
-import {animeRoutes} from "./pages/anime/anime-routing.module";
+import {animeRoutes} from "./pages/anime/pages-routing.module";
 
 const routes: Routes = [
   {
