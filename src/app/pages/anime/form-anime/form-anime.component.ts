@@ -8,6 +8,7 @@ import {
 import {MatDialog} from "@angular/material/dialog";
 import {AnimeControllerService} from "../../../api/services/anime-controller.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {MessageResponse} from "../../../api/models/message-response";
 
 @Component({
   selector: 'app-form-anime',
@@ -84,7 +85,7 @@ export class FormAnimeComponent {
     });
   }
 
-  /*showError(erro: MessageResponse, acao: string) {
+  showError(erro: MessageResponse, acao: string) {
     const dialogRef = this.dialog.open(ConfirmationDialog, {
       data: {
         titulo: `Erro ao ${acao}`,
@@ -94,7 +95,7 @@ export class FormAnimeComponent {
         },
       },
     });
-  }*/
+  }
 
   private prepararEdicao() {
     const paramId = this.route.snapshot.paramMap.get('codigo');
@@ -121,7 +122,7 @@ export class FormAnimeComponent {
         this.router.navigate(["/anime"]);
       }, erro => {
         console.log("Erro:", erro.error);
-        //this.showError(erro.error, this.ACAO_EDITAR);
+          this.showError(erro.error, this.ACAO_EDITAR);
       })
   }
 }
