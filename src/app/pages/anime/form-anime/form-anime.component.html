@@ -19,10 +19,10 @@
   </mat-form-field>
   <mat-form-field>
     <mat-label>Data de Lacamento</mat-label>
-    <input matInput [matDatepicker]="picker" formControlName="dataDeLancamento">
+    <input matInput [matDatepicker]="picker" formControlName="dataLacamento">
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
-    <mat-error *ngIf="handleError('dataDeLancamento', 'required')">
+    <mat-error *ngIf="handleError('dataLacamento', 'required')">
       Status é obrigatório
     </mat-error>
   </mat-form-field>

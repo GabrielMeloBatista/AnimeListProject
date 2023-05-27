@@ -26,6 +26,10 @@ import { IndustryComponent } from './pages/industry/industry.component';
 import { WatchComponent } from './pages/watch/watch.component';
 import { ReadComponent } from './pages/read/read.component';
 import { HelpComponent } from './pages/help/help.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { LoaderDialogComponent } from './arquiteture/loader-dialog/loader-dialog.component';
+import {LoaderModule} from "./arquiteture/loader/loader.module";
+
   "" +
 "anime/anime.module";
 
@@ -38,7 +42,8 @@ import { HelpComponent } from './pages/help/help.component';
     IndustryComponent,
     WatchComponent,
     ReadComponent,
-    HelpComponent
+    HelpComponent,
+    LoaderDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +63,9 @@ import { HelpComponent } from './pages/help/help.component';
     MatFormFieldModule,
     MatInputModule,
     MatOptionModule,
-    AnimeModule
+    MatProgressSpinnerModule,
+    AnimeModule,
+    LoaderModule
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
