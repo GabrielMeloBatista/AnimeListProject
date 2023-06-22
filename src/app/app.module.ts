@@ -21,10 +21,6 @@ import {AnimeModule} from "./pages/anime/anime.module"
 import {MatSelectModule} from "@angular/material/select";
 import {MatInputModule} from "@angular/material/input";
 import {MatOptionModule} from "@angular/material/core";
-import { CommunityComponent } from './pages/community/community.component';
-import { IndustryComponent } from './pages/industry/industry.component';
-import { WatchComponent } from './pages/watch/watch.component';
-import { ReadComponent } from './pages/read/read.component';
 import { HelpComponent } from './pages/help/help.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { LoaderDialogComponent } from './arquiteture/loader-dialog/loader-dialog.component';
@@ -38,10 +34,6 @@ import {LoaderModule} from "./arquiteture/loader/loader.module";
     AppComponent,
     HomeComponent,
     ConfirmationDialog,
-    CommunityComponent,
-    IndustryComponent,
-    WatchComponent,
-    ReadComponent,
     HelpComponent,
     LoaderDialogComponent
   ],

@@ -62,6 +62,7 @@ export class FormAnimeComponent {
       .subscribe(retorno => {
         console.log("Retorno:", retorno);
         this.confirmarAcao(retorno, this.ACAO_INCLUIR);
+        retorno.dataCriacao = `${retorno.dataCriacao}T03:00:00.000Z`;
         this.router.navigate(["/anime"]);
       }, erro => {
         console.log("Erro:" + erro);
@@ -102,11 +103,12 @@ export class FormAnimeComponent {
     if (paramId){
       const codigo = parseInt(paramId);
       console.log("codigo",paramId);
-      this.animeService.obterPorId({id: codigo}).subscribe(
+      this.animeService.obterPorId1({id: codigo}).subscribe(
         retorno => {
           this.acao = this.ACAO_EDITAR;
           console.log("retorno", retorno);
           this.id = retorno.id;
+          retorno.dataCriacao = `${retorno.dataCriacao}T03:00:00.000Z`;
           this.formGroup.patchValue(retorno);
         }
       )
@@ -115,7 +117,7 @@ export class FormAnimeComponent {
 
   private realizarEdicao() {
     console.log("Dados:", this.formGroup.value);
-    this.animeService.alterar({id: this.id, body: this.formGroup.value})
+    this.animeService.alterar1({id: this.id, body: this.formGroup.value})
       .subscribe(retorno => {
         console.log("Retorno:", retorno);
         this.confirmarAcao(retorno, this.ACAO_EDITAR);
