@@ -76,7 +76,7 @@ export class AnimeListComponent{
     this.dialog.open(ConfirmationDialog, {
       data: {
         titulo: 'Mensagem!!!',
-        mensagem: `Ação de ${acao} dados: ${animeDto.anime?.[0].nome} (ID: ${animeDto.id}) realizada com sucesso!`,
+        mensagem: `Ação de ${acao} dados (ID: ${animeDto.id}) realizada com sucesso!`,
         textoBotoes: {
           ok: 'ok',
         },
