@@ -37,7 +37,7 @@ export class ListAnimeComponent implements OnInit {
 
   remover(animeDto: AnimeDto) {
     console.log("Removido", animeDto.id);
-    this.animeService.remover({id: animeDto.id || 0})
+    this.animeService.remover1({id: animeDto.id || 0})
       .subscribe(retorno => {
           this.buscarDados();
           this.showMensagemSimples("Excluído com sucesso ",5000);

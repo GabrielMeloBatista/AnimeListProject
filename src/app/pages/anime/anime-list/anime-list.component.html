@@ -1,0 +1,33 @@
+<form
+  [formGroup]="formGroup"
+  (ngSubmit)="onSubmit()"
+  class="form"
+>
+  <div class="flex flex-col w-full">
+  <label id="score">Avaliação</label>
+  <mat-radio-group
+    formControlName="Score"
+    aria-labelledby="score"
+    class="example-radio-group">
+    <mat-radio-button class="example-radio-button" *ngFor="let score of scores" [value]="score">
+      {{score}}
+    </mat-radio-button>
+  </mat-radio-group>
+  <mat-error *ngIf="handleError('Score', 'required')">
+    A pontuação é obrigatório
+  </mat-error>
+
+  <mat-form-field class="example-form-field">
+    <mat-label>Assitidos</mat-label>
+    <input matInput type="number" value="0" min="0" formControlName="Watched">
+  </mat-form-field>
+    <mat-error *ngIf="handleError('Watched', 'required')">
+      O numero de assitidos é obrigatório
+    </mat-error>
+    <mat-error *ngIf="handleError('Watched', 'minimum')">
+      O valor precisa ser maior que 0
+    </mat-error>
+
+  <button mat-raised-button color="primary" type="submit">Salvar</button>
+  </div>
+</form>
