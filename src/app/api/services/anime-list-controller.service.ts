@@ -9,12 +9,12 @@ import { RequestBuilder } from '../request-builder';
 import { Observable } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 
-import { AnimeDto } from '../models/anime-dto';
+import { AnimeListDto } from '../models/anime-list-dto';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AnimeControllerService extends BaseService {
+export class AnimeListControllerService extends BaseService {
   constructor(
     config: ApiConfiguration,
     http: HttpClient
@@ -23,26 +23,26 @@ export class AnimeControllerService extends BaseService {
   }
 
   /**
-   * Path part for operation obterPorId1
+   * Path part for operation obterPorId
    */
-  static readonly ObterPorId1Path = '/api/v1/anime/{id}';
+  static readonly ObterPorIdPath = '/api/v1/animeList/{id}';
 
   /**
    * Obter os dados completos de uma entidiade pelo id informado!
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `obterPorId1()` instead.
+   * To access only the response body, use `obterPorId()` instead.
    *
    * This method doesn't expect any request body.
    */
-  obterPorId1$Response(params: {
+  obterPorId$Response(params: {
     id: number;
   },
   context?: HttpContext
 
 ): Observable<StrictHttpResponse<any>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AnimeControllerService.ObterPorId1Path, 'get');
+    const rb = new RequestBuilder(this.rootUrl, AnimeListControllerService.ObterPorIdPath, 'get');
     if (params) {
       rb.path('id', params.id, {});
     }
@@ -63,45 +63,45 @@ export class AnimeControllerService extends BaseService {
    * Obter os dados completos de uma entidiade pelo id informado!
    *
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `obterPorId1$Response()` instead.
+   * To access the full response (for headers, for example), `obterPorId$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  obterPorId1(params: {
+  obterPorId(params: {
     id: number;
   },
   context?: HttpContext
 
 ): Observable<any> {
 
-    return this.obterPorId1$Response(params,context).pipe(
+    return this.obterPorId$Response(params,context).pipe(
       map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }
 
   /**
-   * Path part for operation alterar1
+   * Path part for operation alterar
    */
-  static readonly Alterar1Path = '/api/v1/anime/{id}';
+  static readonly AlterarPath = '/api/v1/animeList/{id}';
 
   /**
    * Método utilizado para altlerar os dados de uma entidiade
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `alterar1()` instead.
+   * To access only the response body, use `alterar()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  alterar1$Response(params: {
+  alterar$Response(params: {
     id: number;
-    body: AnimeDto
+    body: AnimeListDto
   },
   context?: HttpContext
 
 ): Observable<StrictHttpResponse<{
 }>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AnimeControllerService.Alterar1Path, 'put');
+    const rb = new RequestBuilder(this.rootUrl, AnimeListControllerService.AlterarPath, 'put');
     if (params) {
       rb.path('id', params.id, {});
       rb.body(params.body, 'application/json');
@@ -124,20 +124,20 @@ export class AnimeControllerService extends BaseService {
    * Método utilizado para altlerar os dados de uma entidiade
    *
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `alterar1$Response()` instead.
+   * To access the full response (for headers, for example), `alterar$Response()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  alterar1(params: {
+  alterar(params: {
     id: number;
-    body: AnimeDto
+    body: AnimeListDto
   },
   context?: HttpContext
 
 ): Observable<{
 }> {
 
-    return this.alterar1$Response(params,context).pipe(
+    return this.alterar$Response(params,context).pipe(
       map((r: StrictHttpResponse<{
 }>) => r.body as {
 })
@@ -145,26 +145,26 @@ export class AnimeControllerService extends BaseService {
   }
 
   /**
-   * Path part for operation remover1
+   * Path part for operation remover
    */
-  static readonly Remover1Path = '/api/v1/anime/{id}';
+  static readonly RemoverPath = '/api/v1/animeList/{id}';
 
   /**
    * Método utilizado para remover uma entidiade pela id informado
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `remover1()` instead.
+   * To access only the response body, use `remover()` instead.
    *
    * This method doesn't expect any request body.
    */
-  remover1$Response(params: {
+  remover$Response(params: {
     id: number;
   },
   context?: HttpContext
 
 ): Observable<StrictHttpResponse<any>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AnimeControllerService.Remover1Path, 'delete');
+    const rb = new RequestBuilder(this.rootUrl, AnimeListControllerService.RemoverPath, 'delete');
     if (params) {
       rb.path('id', params.id, {});
     }
@@ -185,42 +185,42 @@ export class AnimeControllerService extends BaseService {
    * Método utilizado para remover uma entidiade pela id informado
    *
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `remover1$Response()` instead.
+   * To access the full response (for headers, for example), `remover$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  remover1(params: {
+  remover(params: {
     id: number;
   },
   context?: HttpContext
 
 ): Observable<any> {
 
-    return this.remover1$Response(params,context).pipe(
+    return this.remover$Response(params,context).pipe(
       map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }
 
   /**
-   * Path part for operation listAll
+   * Path part for operation listAll1
    */
-  static readonly ListAllPath = '/api/v1/anime';
+  static readonly ListAll1Path = '/api/v1/animeList';
 
   /**
    * Listagem Geral
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `listAll()` instead.
+   * To access only the response body, use `listAll1()` instead.
    *
    * This method doesn't expect any request body.
    */
-  listAll$Response(params?: {
+  listAll1$Response(params?: {
   },
   context?: HttpContext
 
 ): Observable<StrictHttpResponse<any>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AnimeControllerService.ListAllPath, 'get');
+    const rb = new RequestBuilder(this.rootUrl, AnimeListControllerService.ListAll1Path, 'get');
     if (params) {
     }
 
@@ -240,42 +240,42 @@ export class AnimeControllerService extends BaseService {
    * Listagem Geral
    *
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `listAll$Response()` instead.
+   * To access the full response (for headers, for example), `listAll1$Response()` instead.
    *
    * This method doesn't expect any request body.
    */
-  listAll(params?: {
+  listAll1(params?: {
   },
   context?: HttpContext
 
 ): Observable<any> {
 
-    return this.listAll$Response(params,context).pipe(
+    return this.listAll1$Response(params,context).pipe(
       map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }
 
   /**
-   * Path part for operation incluir
+   * Path part for operation incluir1
    */
-  static readonly IncluirPath = '/api/v1/anime';
+  static readonly Incluir1Path = '/api/v1/animeList';
 
   /**
    * Método utilizado para realizar a inclusão de um entidade
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
-   * To access only the response body, use `incluir()` instead.
+   * To access only the response body, use `incluir1()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  incluir$Response(params: {
-    body: AnimeDto
+  incluir1$Response(params: {
+    body: AnimeListDto
   },
   context?: HttpContext
 
 ): Observable<StrictHttpResponse<any>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AnimeControllerService.IncluirPath, 'post');
+    const rb = new RequestBuilder(this.rootUrl, AnimeListControllerService.Incluir1Path, 'post');
     if (params) {
       rb.body(params.body, 'application/json');
     }
@@ -296,18 +296,18 @@ export class AnimeControllerService extends BaseService {
    * Método utilizado para realizar a inclusão de um entidade
    *
    * This method provides access only to the response body.
-   * To access the full response (for headers, for example), `incluir$Response()` instead.
+   * To access the full response (for headers, for example), `incluir1$Response()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  incluir(params: {
-    body: AnimeDto
+  incluir1(params: {
+    body: AnimeListDto
   },
   context?: HttpContext
 
 ): Observable<any> {
 
-    return this.incluir$Response(params,context).pipe(
+    return this.incluir1$Response(params,context).pipe(
       map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }

@@ -16,11 +16,14 @@ import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from "@angular/material/core";
+import { AnimeListComponent } from './anime-list/anime-list.component';
+import {MatRadioModule} from "@angular/material/radio";
 @NgModule({
   declarations: [
     ListAnimeComponent,
     HomeAnimeComponent,
-    FormAnimeComponent
+    FormAnimeComponent,
+    AnimeListComponent
   ],
   imports: [
     CommonModule,
@@ -35,6 +38,7 @@ import {MatNativeDateModule} from "@angular/material/core";
     ReactiveFormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatRadioModule,
   ]
 })
 export class AnimeModule { }

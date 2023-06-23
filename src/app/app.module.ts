@@ -25,6 +25,7 @@ import { HelpComponent } from './pages/help/help.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { LoaderDialogComponent } from './arquiteture/loader-dialog/loader-dialog.component';
 import {LoaderModule} from "./arquiteture/loader/loader.module";
+import {MatRadioModule} from '@angular/material/radio';
 
   "" +
 "anime/anime.module";
@@ -57,7 +58,8 @@ import {LoaderModule} from "./arquiteture/loader/loader.module";
     MatOptionModule,
     MatProgressSpinnerModule,
     AnimeModule,
-    LoaderModule
+    LoaderModule,
+    MatRadioModule
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}

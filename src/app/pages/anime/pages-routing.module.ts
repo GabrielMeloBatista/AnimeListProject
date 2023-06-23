@@ -3,6 +3,7 @@ import {HomeAnimeComponent} from "./home-anime/home-anime.component";
 import {ListAnimeComponent} from "./list-anime/list-anime.component";
 import {FormAnimeComponent} from "./form-anime/form-anime.component";
 import {HelpComponent} from "../help/help.component";
+import {AnimeListComponent} from "./anime-list/anime-list.component";
 
 export const animeRoutes: Routes = [
   {
@@ -20,6 +21,10 @@ export const animeRoutes: Routes = [
       {
         path: ":codigo",
         component: FormAnimeComponent
+      },
+      {
+        path: "list/:codigo",
+        component: AnimeListComponent
       }
     ]
   },

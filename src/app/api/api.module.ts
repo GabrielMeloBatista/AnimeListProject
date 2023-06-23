@@ -4,6 +4,7 @@ import { NgModule, ModuleWithProviders, SkipSelf, Optional } from '@angular/core
 import { HttpClient } from '@angular/common/http';
 import { ApiConfiguration, ApiConfigurationParams } from './api-configuration';
 
+import { AnimeListControllerService } from './services/anime-list-controller.service';
 import { AnimeControllerService } from './services/anime-controller.service';
 
 /**
@@ -14,6 +15,7 @@ import { AnimeControllerService } from './services/anime-controller.service';
   exports: [],
   declarations: [],
   providers: [
+    AnimeListControllerService,
     AnimeControllerService,
     ApiConfiguration
   ],
