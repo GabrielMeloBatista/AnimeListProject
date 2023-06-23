@@ -23,7 +23,10 @@ export const animeRoutes: Routes = [
         component: FormAnimeComponent
       },
       {
-        path: "list/:codigo",
+        path: "list/:codigoAnime",
+        component: AnimeListComponent
+      },{
+        path: "list/:codigoAnime/:codigo",
         component: AnimeListComponent
       }
     ]

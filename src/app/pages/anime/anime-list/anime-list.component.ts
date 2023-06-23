@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {DateAdapter} from "@angular/material/core";
@@ -17,9 +17,12 @@ import {AnimeDto} from "../../../api/models/anime-dto";
 })
 export class AnimeListComponent{
   formGroup!: FormGroup;
-  scores = ['Obra Prima', "Otimo", "Muito Bom", "Bom", "Normal", "Ruim", "Muito Ruim", "Horrível", "Nojento"];
+  scores:number[] = [1, 2, 3, 4, 5, 6, 7, 8];
   anime?: AnimeDto;
-  acao: string = "Marcar";
+  public readonly ACAO_INCLUIR = "Incluir";
+  public readonly ACAO_EDITAR = "Editar";
+
+  acao: string = this.ACAO_INCLUIR;
   id!: number;
   constructor(
     private router: Router,
@@ -30,7 +33,7 @@ export class AnimeListComponent{
     public animeService: AnimeControllerService,
     private dialog: MatDialog,
   ) {
-    this.animeService.obterPorId1({id: parseInt(this.route.snapshot.paramMap.get('codigo') + "")
+    this.animeService.obterPorId1({id: parseInt(this.route.snapshot.paramMap.get('codigoAnime') + "")
     }).subscribe(retorno => {
       console.log("A", retorno);
       this.anime = retorno;
@@ -42,14 +45,18 @@ export class AnimeListComponent{
   createForm() {
     this.formGroup = this.formBuilder.group({
       anime: [this.anime],
-      Watched: [null, Validators.required],
-      Score: [null]
+      watched: [0, Validators.required],
+      score: [null]
     });
   }
 
   onSubmit() {
     if (this.formGroup.valid) {
-      this.realizarInclusao();
+      if (!this.id) {
+        this.realizarInclusao();
+      } else {
+        this.realizarEdicao();
+      }
     }
     console.log(this.formGroup.valid)
   }
@@ -72,6 +79,18 @@ export class AnimeListComponent{
     return this.formGroup.controls[controlName].hasError(errorName);
   };
 
+  showError(erro: MessageResponse, acao: string) {
+    const dialogRef = this.dialog.open(ConfirmationDialog, {
+      data: {
+        titulo: `Erro ao ${acao}`,
+        mensagem: erro.message,
+        textoBotoes: {
+          ok: 'ok',
+        },
+      },
+    });
+  }
+
   confirmarAcao(animeDto: AnimeListDto, acao: string) {
     this.dialog.open(ConfirmationDialog, {
       data: {
@@ -82,5 +101,35 @@ export class AnimeListComponent{
         },
       },
     });
+  }
+
+  private prepararEdicao() {
+    const paramId = this.route.snapshot.paramMap.get('codigo');
+    if (paramId){
+      const codigo = parseInt(paramId);
+      console.log("codigo",paramId);
+      this.animeService.obterPorId1({id: codigo}).subscribe(
+        retorno => {
+          this.acao = this.ACAO_EDITAR;
+          console.log("retorno", retorno);
+          this.id = retorno.id;
+          retorno.dataCriacao = `${retorno.dataCriacao}T03:00:00.000Z`;
+          this.formGroup.patchValue(retorno);
+        }
+      )
+    }
+  }
+
+  private realizarEdicao() {
+    console.log("Dados:", this.formGroup.value);
+    this.animeService.alterar1({id: this.id, body: this.formGroup.value})
+      .subscribe(retorno => {
+        console.log("Retorno:", retorno);
+        this.confirmarAcao(retorno, this.ACAO_EDITAR);
+        this.router.navigate(["/anime"]);
+      }, erro => {
+        console.log("Erro:", erro.error);
+        this.showError(erro.error, this.ACAO_EDITAR);
+      })
   }
 }
