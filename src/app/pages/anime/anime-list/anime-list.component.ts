@@ -9,21 +9,26 @@ import {MessageResponse} from "../../../api/models/message-response";
 import {AnimeListControllerService} from "../../../api/services/anime-list-controller.service";
 import {AnimeListDto} from "../../../api/models/anime-list-dto";
 import {AnimeDto} from "../../../api/models/anime-dto";
+import {MatTableDataSource} from "@angular/material/table";
 
 @Component({
   selector: 'app-anime-list',
   templateUrl: './anime-list.component.html',
   styleUrls: ['./anime-list.component.scss']
 })
-export class AnimeListComponent{
+export class AnimeListComponent implements OnInit {
   formGroup!: FormGroup;
   scores:number[] = [1, 2, 3, 4, 5, 6, 7, 8];
   anime?: AnimeDto;
   public readonly ACAO_INCLUIR = "Incluir";
   public readonly ACAO_EDITAR = "Editar";
 
+  colunasMostrar = ['id', 'score', 'watched'];
+
   acao: string = this.ACAO_INCLUIR;
   id!: number;
+
+  animeListaDataSource: MatTableDataSource<AnimeListDto> = new MatTableDataSource<AnimeListDto>([]);
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -42,15 +47,27 @@ export class AnimeListComponent{
     this._adapter.setLocale('pt-br');
   }
 
+
+  ngOnInit(): void {
+    this.buscarDados();
+  }
+
+  private buscarDados() {
+    this.animeListService.listAll1().subscribe(data => {
+      this.animeListaDataSource.data = data;
+    })
+  }
+
   createForm() {
     this.formGroup = this.formBuilder.group({
-      anime: [this.anime],
+      anime: [null],
       watched: [0, Validators.required],
       score: [null]
     });
   }
 
   onSubmit() {
+    this.formGroup.patchValue({anime: this.anime});
     if (this.formGroup.valid) {
       if (!this.id) {
         this.realizarInclusao();

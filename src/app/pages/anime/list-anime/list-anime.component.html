@@ -1,4 +1,8 @@
-<section class="example-container mat-elevation-z8" tabindex="0">
+<button mat-raised-button color="primary" [routerLink]="['/anime','novo']">
+  <mat-icon>add</mat-icon>
+  <span>Adicionar</span>
+</button>
+<section class="example-container mat-elevation-z8 tabble-thingy" tabindex="0">
   <table mat-table [dataSource]="animeListaDataSource">
 
     <!-- Position Column -->

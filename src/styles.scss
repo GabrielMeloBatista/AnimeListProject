@@ -8,6 +8,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   src: url('~src/assets/AGRevueCyr Roman Medium.ttf') format('truetype');
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+.form-thingy{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.tabble-thingy {
+  margin-top: 3vh;
+}
