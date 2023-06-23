@@ -4,24 +4,23 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {DateAdapter} from "@angular/material/core";
 import {AnimeControllerService} from "../../../api/services/anime-controller.service";
 import {MatDialog} from "@angular/material/dialog";
-import {AnimeDto} from "../../../api/models/anime-dto";
 import {ConfirmationDialog} from "../../../core/confirmation-dialog/confirmation-dialog.component";
 import {MessageResponse} from "../../../api/models/message-response";
 import {AnimeListControllerService} from "../../../api/services/anime-list-controller.service";
 import {AnimeListDto} from "../../../api/models/anime-list-dto";
+import {AnimeDto} from "../../../api/models/anime-dto";
 
 @Component({
   selector: 'app-anime-list',
   templateUrl: './anime-list.component.html',
   styleUrls: ['./anime-list.component.scss']
 })
-export class AnimeListComponent {
+export class AnimeListComponent{
   formGroup!: FormGroup;
   scores = ['Obra Prima', "Otimo", "Muito Bom", "Bom", "Normal", "Ruim", "Muito Ruim", "Horrível", "Nojento"];
-
+  anime?: AnimeDto;
   acao: string = "Marcar";
   id!: number;
-  anime;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -31,9 +30,13 @@ export class AnimeListComponent {
     public animeService: AnimeControllerService,
     private dialog: MatDialog,
   ) {
+    this.animeService.obterPorId1({id: parseInt(this.route.snapshot.paramMap.get('codigo') + "")
+    }).subscribe(retorno => {
+      console.log("A", retorno);
+      this.anime = retorno;
+    })
     this.createForm();
     this._adapter.setLocale('pt-br');
-    this.anime = animeService.obterPorId1({id: parseInt(<string>this.route.snapshot.paramMap.get('codigo'))});
   }
 
   createForm() {
@@ -46,12 +49,13 @@ export class AnimeListComponent {
 
   onSubmit() {
     if (this.formGroup.valid) {
-        this.realizarInclusao();
+      this.realizarInclusao();
     }
     console.log(this.formGroup.valid)
   }
 
   private realizarInclusao() {
+    console.log("Anime:", this.anime);
     console.log("Dados:", this.formGroup.value);
     this.animeListService.incluir1({body: this.formGroup.value})
       .subscribe(retorno => {
