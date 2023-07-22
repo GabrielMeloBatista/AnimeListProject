@@ -125,7 +125,8 @@ export class ListAnimeComponent implements OnInit {
   }
 
   onScroll(): void {
-    this.limit += this.offset; // Aumenta o limite para exibir mais itens
+    console.log("Limit: ", this.limit,"offset:", this.offset);
+    this.offset += this.limit; // Aumenta o limite para exibir mais itens
     this.buscarDados(); // Carrega mais itens
   }
 }
