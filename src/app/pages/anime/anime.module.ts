@@ -18,6 +18,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from "@angular/material/core";
 import { AnimeListComponent } from './anime-list/anime-list.component';
 import {MatRadioModule} from "@angular/material/radio";
+import { MatGridListModule } from "@angular/material/grid-list";
 @NgModule({
   declarations: [
     ListAnimeComponent,
@@ -39,6 +40,7 @@ import {MatRadioModule} from "@angular/material/radio";
     MatDatepickerModule,
     MatNativeDateModule,
     MatRadioModule,
+    MatGridListModule
   ]
 })
 export class AnimeModule { }

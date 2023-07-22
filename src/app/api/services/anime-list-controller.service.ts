@@ -312,4 +312,64 @@ export class AnimeListControllerService extends BaseService {
     );
   }
 
+  /**
+   * Path part for operation getDados
+   */
+  static readonly GetDadosPath = '/api/v1/animeList/data';
+
+  /**
+   * lazy loading
+   *
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `getDados()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getDados$Response(params: {
+    offset: number;
+    limit: number;
+  },
+  context?: HttpContext
+
+): Observable<StrictHttpResponse<any>> {
+
+    const rb = new RequestBuilder(this.rootUrl, AnimeListControllerService.GetDadosPath, 'get');
+    if (params) {
+      rb.query('offset', params.offset, {});
+      rb.query('limit', params.limit, {});
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'json',
+      accept: 'application/json',
+      context: context
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<any>;
+      })
+    );
+  }
+
+  /**
+   * lazy loading
+   *
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `getDados$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getDados(params: {
+    offset: number;
+    limit: number;
+  },
+  context?: HttpContext
+
+): Observable<any> {
+
+    return this.getDados$Response(params,context).pipe(
+      map((r: StrictHttpResponse<any>) => r.body as any)
+    );
+  }
+
 }
