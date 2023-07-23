@@ -3,6 +3,14 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+::-webkit-scrollbar {
+  width: 0; /* Set a width for the scrollbar (you can adjust this as needed) */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: transparent; /* Make the scrollbar thumb transparent */
+}
+
 @font-face {
   font-family: 'MyAnimeListTitle';
   src: url('~src/assets/AGRevueCyr Roman Medium.ttf') format('truetype');

@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {LoaderService} from "./arquiteture/loader/loader.service";
 import {LoaderDialogComponent} from "./arquiteture/loader-dialog/loader-dialog.component";
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -16,7 +15,6 @@ export class AppComponent implements OnInit {
   public constructor(
     private dialog: MatDialog,
     private loaderService: LoaderService,
-    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -34,7 +32,5 @@ export class AppComponent implements OnInit {
         this.dialogRef.close();
       }
     });
-
-    this.router.navigate(["/anime"]);
   }
 }

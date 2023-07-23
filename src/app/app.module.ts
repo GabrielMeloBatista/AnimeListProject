@@ -1,33 +1,35 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatTabsModule } from '@angular/material/tabs';
-import { HomeComponent } from './core/home/home.component';
-import {HttpClientModule} from "@angular/common/http";
-import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatSidenavModule} from "@angular/material/sidenav";
-import {MatButtonModule} from "@angular/material/button";
-import {MatDividerModule} from "@angular/material/divider";
-import {MatDialogModule} from "@angular/material/dialog";
-import {MatSnackBarModule} from "@angular/material/snack-bar";
-import {MatIconModule} from "@angular/material/icon";
-import { ConfirmationDialog } from './core/confirmation-dialog/confirmation-dialog.component';
-import {RouterModule} from "@angular/router";
-import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule} from "@angular/material/form-field";
-import {AnimeModule} from "./pages/anime/anime.module"
-import {MatSelectModule} from "@angular/material/select";
-import {MatInputModule} from "@angular/material/input";
-import {MatOptionModule} from "@angular/material/core";
-import { HelpComponent } from './pages/help/help.component';
-import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
-import { LoaderDialogComponent } from './arquiteture/loader-dialog/loader-dialog.component';
-import {LoaderModule} from "./arquiteture/loader/loader.module";
-import {MatRadioModule} from '@angular/material/radio';
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { MatTabsModule } from "@angular/material/tabs";
+import { HomeComponent } from "./core/home/home.component";
+import { HttpClientModule } from "@angular/common/http";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatButtonModule } from "@angular/material/button";
+import { MatDividerModule } from "@angular/material/divider";
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatIconModule } from "@angular/material/icon";
+import { ConfirmationDialog } from "./core/confirmation-dialog/confirmation-dialog.component";
+import { RouterModule } from "@angular/router";
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule } from "@angular/material/form-field";
+import { AnimeModule } from "./pages/anime/anime.module";
+import { MatSelectModule } from "@angular/material/select";
+import { MatInputModule } from "@angular/material/input";
+import { MatOptionModule } from "@angular/material/core";
+import { HelpComponent } from "./pages/help/help.component";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { LoaderDialogComponent } from "./arquiteture/loader-dialog/loader-dialog.component";
+import { LoaderModule } from "./arquiteture/loader/loader.module";
+import { MatRadioModule } from "@angular/material/radio";
+import { WelcomeComponent } from "./pages/welcome/welcome.component";
+import { PageNotFoundComponent } from "./core/page-not-found/page-not-found.component";
 
-  "" +
+"" +
 "anime/anime.module";
 
 @NgModule({
@@ -36,7 +38,9 @@ import {MatRadioModule} from '@angular/material/radio';
     HomeComponent,
     ConfirmationDialog,
     HelpComponent,
-    LoaderDialogComponent
+    LoaderDialogComponent,
+    WelcomeComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -62,8 +66,9 @@ import {MatRadioModule} from '@angular/material/radio';
     MatRadioModule
   ],
   providers: [
-    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: "outline" } }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
