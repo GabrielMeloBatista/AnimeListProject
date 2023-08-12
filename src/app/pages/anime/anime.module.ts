@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from "@angular/common";
 
 import { ListAnimeComponent } from './list-anime/list-anime.component';
 import { HomeAnimeComponent } from './home-anime/home-anime.component';
@@ -24,7 +24,7 @@ import { MatGridListModule } from "@angular/material/grid-list";
     ListAnimeComponent,
     HomeAnimeComponent,
     FormAnimeComponent,
-    AnimeListComponent
+    AnimeListComponent,
   ],
   imports: [
     CommonModule,
@@ -40,7 +40,8 @@ import { MatGridListModule } from "@angular/material/grid-list";
     MatDatepickerModule,
     MatNativeDateModule,
     MatRadioModule,
-    MatGridListModule
-  ]
+    MatGridListModule,
+    NgOptimizedImage,
+  ],
 })
-export class AnimeModule { }
+export class AnimeModule {}
