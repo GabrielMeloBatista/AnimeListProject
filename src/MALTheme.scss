@@ -1,8 +1,9 @@
 @use '@angular/material' as mat;
+@import '@angular/material/theming';
 
 @include mat.core();
 
-$primary-pallette: (
+$primary-palette: (
   50: #2e51a2,
   100: #2e51a2,
   200: #2e51a2,
@@ -19,7 +20,7 @@ $primary-pallette: (
   )
 );
 
-$accent-pallette: (
+$accent-palette: (
   50: #0a101c,
   100: #0a101c,
   200: #0a101c,
@@ -36,7 +37,7 @@ $accent-pallette: (
   )
 );
 
-$warn-pallette: (
+$warn-palette: (
   50: #ea247a,
   100: #ea247a,
   200: #ea247a,
@@ -53,11 +54,11 @@ $warn-pallette: (
   )
 );
 
-$mal-primary: mat.define-palette($primary-pallette);
-$mal-accent: mat.define-palette($accent-pallette);
-$mal-warn: mat.define-palette($warn-pallette);
+$mal-primary: mat.define-palette($primary-palette);
+$mal-accent: mat.define-palette($accent-palette);
+$mal-warn: mat.define-palette($warn-palette);
 
-$mal-theme: mat.define-light-theme((
+$mal-theme-light: mat.define-light-theme((
   color: (
     primary: $mal-primary,
     accent: $mal-accent,
@@ -67,7 +68,7 @@ $mal-theme: mat.define-light-theme((
   density: 0,
 ));
 
-$mal-theme: mat.define-dark-theme((
+$mal-theme-dark: mat.define-dark-theme((
   color: (
     primary: $mal-primary,
     accent: $mal-accent,
@@ -77,4 +78,5 @@ $mal-theme: mat.define-dark-theme((
   density: 0,
 ));
 
-@include mat.all-component-themes($mal-theme);
+@include mat.all-component-themes($mal-theme-light);
+@include mat.all-component-themes($mal-theme-dark);

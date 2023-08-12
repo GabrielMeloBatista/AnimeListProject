@@ -28,6 +28,9 @@ import { LoaderModule } from "./arquiteture/loader/loader.module";
 import { MatRadioModule } from "@angular/material/radio";
 import { WelcomeComponent } from "./pages/welcome/welcome.component";
 import { PageNotFoundComponent } from "./core/page-not-found/page-not-found.component";
+import { MatSliderModule } from "@angular/material/slider";
+import { FormsModule } from "@angular/forms";
+import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 
 "" +
 "anime/anime.module";
@@ -40,7 +43,7 @@ import { PageNotFoundComponent } from "./core/page-not-found/page-not-found.comp
     HelpComponent,
     LoaderDialogComponent,
     WelcomeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,12 +66,17 @@ import { PageNotFoundComponent } from "./core/page-not-found/page-not-found.comp
     MatProgressSpinnerModule,
     AnimeModule,
     LoaderModule,
-    MatRadioModule
+    MatRadioModule,
+    MatSliderModule,
+    FormsModule,
+    MatSlideToggleModule,
   ],
   providers: [
-    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: "outline" } }
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: { appearance: 'outline' },
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}

@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {LoaderService} from "./arquiteture/loader/loader.service";
 import {LoaderDialogComponent} from "./arquiteture/loader-dialog/loader-dialog.component";
+import { ThemeMode, ThemeService } from "./service/theme.service";
+import { OverlayContainer } from "@angular/cdk/overlay";
 
 @Component({
   selector: 'app-root',

@@ -7,27 +7,35 @@ import { Router } from "@angular/router";
   styleUrls: ["./welcome.component.scss"]
 })
 export class WelcomeComponent {
-  previousScrollPosition = window.scrollY;
-  count = 0;
-  size = 3;
+  images: string[] = [
+    'https://images.alphacoders.com/605/605592.png',
+    'https://images2.alphacoders.com/564/564835.jpg',
+    'https://images.alphacoders.com/131/1311951.jpg',
+    'https://images2.alphacoders.com/516/516664.jpg'
+  ];
+  currentIndex: number = 0;
+  dynamicText: string[] = [
+    'https://images.alphacoders.com/605/605592.png',
+    'https://images2.alphacoders.com/564/564835.jpg',
+    'https://images.alphacoders.com/131/1311951.jpg',
+    'https://images2.alphacoders.com/516/516664.jpg'
+  ]
+  interval: any;
+  backgroundImageUrl: string = this.images[this.currentIndex];
 
-  constructor(private router: Router) {
+  ngOnInit() {
+    this.startSlideshow();
   }
 
-  @HostListener("window:scroll", ["$event"])
-  onScroll() {
-    const currentScrollPosition = window.scrollY;
-    if (currentScrollPosition > this.previousScrollPosition) {
-      this.count += 1;
-    } else if (currentScrollPosition < this.previousScrollPosition) {
-      this.count -= 1;
-    }
-    if (this.count < 0) {
-      this.count = this.size;
-    } else if (this.count > this.size) {
-      this.count = 0;
-    }
+  startSlideshow() {
+    this.interval = setInterval(() => {
+      this.currentIndex = (this.currentIndex + 1) % this.images.length;
+      this.backgroundImageUrl = this.images[this.currentIndex];
+    }, 3000); // Altere o valor para o intervalo desejado em milissegundos
+  }
 
-    this.router.navigate(["home#" + this.count]);
+  pauseSlideshow() {
+    clearInterval(this.interval);
+    this.startSlideshow();
   }
 }
