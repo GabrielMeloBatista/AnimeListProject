@@ -15,10 +15,10 @@ export class WelcomeComponent {
   ];
   currentIndex: number = 0;
   dynamicText: string[] = [
-    'https://images.alphacoders.com/605/605592.png',
-    'https://images2.alphacoders.com/564/564835.jpg',
-    'https://images.alphacoders.com/131/1311951.jpg',
-    'https://images2.alphacoders.com/516/516664.jpg'
+    'Faça uma Lista',
+    'De sua opinião ruim',
+    'Marque os animes',
+    'E muito mais (e só isso)'
   ]
   interval: any;
   backgroundImageUrl: string = this.images[this.currentIndex];
