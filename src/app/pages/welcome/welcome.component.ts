@@ -7,7 +7,9 @@ import { Router } from "@angular/router";
   styleUrls: ["./welcome.component.scss"]
 })
 export class WelcomeComponent {
-  images: string[] = [];
+  images: string[] = [
+    "0", "1", "2", "3"
+  ];
   currentIndex: number = 0;
   dynamicText: string[] = [
     'Faça uma Lista',

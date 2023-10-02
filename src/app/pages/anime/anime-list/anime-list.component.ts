@@ -4,12 +4,12 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {DateAdapter} from "@angular/material/core";
 import {AnimeControllerService} from "../../../api/services/anime-controller.service";
 import {MatDialog} from "@angular/material/dialog";
-import {ConfirmationDialog} from "../../../core/confirmation-dialog/confirmation-dialog.component";
 import {MessageResponse} from "../../../api/models/message-response";
 import {AnimeListControllerService} from "../../../api/services/anime-list-controller.service";
 import {AnimeListDto} from "../../../api/models/anime-list-dto";
 import {AnimeDto} from "../../../api/models/anime-dto";
 import {MatTableDataSource} from "@angular/material/table";
+import {ConfirmDialogComponent} from "../../../message/confirm-dialog/confirm-dialog.component";
 
 @Component({
   selector: 'app-anime-list',
@@ -97,7 +97,7 @@ export class AnimeListComponent implements OnInit {
   };
 
   showError(erro: MessageResponse, acao: string) {
-    const dialogRef = this.dialog.open(ConfirmationDialog, {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: {
         titulo: `Erro ao ${acao}`,
         mensagem: erro.message,
@@ -109,7 +109,7 @@ export class AnimeListComponent implements OnInit {
   }
 
   confirmarAcao(animeDto: AnimeListDto, acao: string) {
-    this.dialog.open(ConfirmationDialog, {
+    this.dialog.open(ConfirmDialogComponent, {
       data: {
         titulo: 'Mensagem!!!',
         mensagem: `Ação de ${acao} dados (ID: ${animeDto.id}) realizada com sucesso!`,

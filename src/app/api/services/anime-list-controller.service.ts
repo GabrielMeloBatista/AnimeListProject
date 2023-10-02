@@ -85,7 +85,7 @@ export class AnimeListControllerService extends BaseService {
   static readonly AlterarPath = '/api/v1/animeList/{id}';
 
   /**
-   * Método utilizado para altlerar os dados de uma entidiade
+   * Método utilizado para alterar os dados de uma entidiade
    *
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
    * To access only the response body, use `alterar()` instead.
@@ -98,8 +98,7 @@ export class AnimeListControllerService extends BaseService {
   },
   context?: HttpContext
 
-): Observable<StrictHttpResponse<{
-}>> {
+): Observable<StrictHttpResponse<any>> {
 
     const rb = new RequestBuilder(this.rootUrl, AnimeListControllerService.AlterarPath, 'put');
     if (params) {
@@ -114,14 +113,13 @@ export class AnimeListControllerService extends BaseService {
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<{
-        }>;
+        return r as StrictHttpResponse<any>;
       })
     );
   }
 
   /**
-   * Método utilizado para altlerar os dados de uma entidiade
+   * Método utilizado para alterar os dados de uma entidiade
    *
    * This method provides access only to the response body.
    * To access the full response (for headers, for example), `alterar$Response()` instead.
@@ -134,13 +132,10 @@ export class AnimeListControllerService extends BaseService {
   },
   context?: HttpContext
 
-): Observable<{
-}> {
+): Observable<any> {
 
     return this.alterar$Response(params,context).pipe(
-      map((r: StrictHttpResponse<{
-}>) => r.body as {
-})
+      map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }
 

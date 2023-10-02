@@ -7,7 +7,7 @@ import { delay } from "rxjs";
 import { filter } from "rxjs/operators";
 import { OverlayContainer } from "@angular/cdk/overlay";
 import { ThemeMode, ThemeService } from "../../service/theme.service";
-
+import {SecurityService} from "../../arquiteture/security/security.service";
 
 @UntilDestroy()
 @Component({
@@ -24,7 +24,8 @@ export class HomeComponent implements OnInit {
     private observer: BreakpointObserver,
     private router: Router,
     private overlayContainer: OverlayContainer,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private securityService: SecurityService
   ) {
     if (this.router.url === '/'){
       this.router.navigate(["/home"]);
@@ -82,5 +83,10 @@ export class HomeComponent implements OnInit {
       document.body.classList.add('dark-theme');
       this.overlayContainer.getContainerElement().classList.add('mat-dark-theme');
     }
+  }
+
+  sair() {
+    this.securityService.invalidate();
+    this.router.navigate(['/acesso']);
   }
 }

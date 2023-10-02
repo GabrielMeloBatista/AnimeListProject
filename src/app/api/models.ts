@@ -1,5 +1,9 @@
+export { CredencialDto } from './models/credencial-dto';
 export { FieldResponse } from './models/field-response';
 export { MessageResponse } from './models/message-response';
+export { UsuarioSenhaDto } from './models/usuario-senha-dto';
 export { Anime } from './models/anime';
 export { AnimeListDto } from './models/anime-list-dto';
 export { AnimeDto } from './models/anime-dto';
+export { CredencialRegisterDto } from './models/credencial-register-dto';
+export { AuthDto } from './models/auth-dto';
