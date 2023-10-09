@@ -85,8 +85,16 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  logado():boolean {
+    return this.securityService.isValid();
+  }
+
   sair() {
     this.securityService.invalidate();
-    this.router.navigate(['/acesso']);
+    this.router.navigate(['/']);
+  }
+
+  logar() {
+    this.router.navigate(['/access']);
   }
 }

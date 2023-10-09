@@ -8,6 +8,7 @@ import {
   ConfirmationDialog,
   ConfirmationDialogResult
 } from "../../../core/confirmation-dialog/confirmation-dialog.component";
+import {SecurityService} from "../../../arquiteture/security/security.service";
 
 @Component({
   selector: "app-list-anime",
@@ -27,7 +28,8 @@ export class ListAnimeComponent implements OnInit {
   constructor(
     public animeService: AnimeControllerService,
     private dialog: MatDialog,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private securityService: SecurityService
   ) {
   }
 
@@ -128,5 +130,13 @@ export class ListAnimeComponent implements OnInit {
     console.log("Limit: ", this.limit,"offset:", this.offset);
     this.offset += this.limit; // Aumenta o limite para exibir mais itens
     this.buscarDados(); // Carrega mais itens
+  }
+
+  isAdmin() : boolean {
+    return this.securityService.hasRoles("ROLE_ADMIN");
+  }
+
+  isUser() : boolean {
+    return this.securityService.isValid();
   }
 }

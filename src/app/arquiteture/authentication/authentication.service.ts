@@ -13,7 +13,7 @@ import {AuthApiService} from "../../api/services/auth-api.service";
  * @author Guiliano Rangel (UEG)
  */
 @Injectable()
-export class AutenticacaoService {
+export class AuthenticationService {
 
   /**
    * Construtor da classe.

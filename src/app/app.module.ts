@@ -32,17 +32,13 @@ import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { AlertMessageComponent } from './message/alert-message/alert-message.component';
 import { ConfirmDialogComponent } from './message/confirm-dialog/confirm-dialog.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {AutenticacaoModule} from "./arquiteture/autenticacao/autenticacao.module";
+import {AuthenticationModule} from "./arquiteture/authentication/authentication.module";
 import {SecurityModule} from "./arquiteture/security/security.module";
 import {SecurityInterceptor} from "./arquiteture/security/security.interceptor";
 import {MessageModule} from "./message/message.module";
 import {AppInterceptor} from "./arquiteture/app.interceptor";
-import { AutenticacaoComponent } from './arquiteture/autenticacao/autenticacao.component';
 import { MatCardModule } from "@angular/material/card";
 import { ConfirmationDialog } from "./core/confirmation-dialog/confirmation-dialog.component";
-
-"" +
-"anime/anime.module";
 
 @NgModule({
   declarations: [
@@ -52,7 +48,7 @@ import { ConfirmationDialog } from "./core/confirmation-dialog/confirmation-dial
     LoaderDialogComponent,
     WelcomeComponent,
     PageNotFoundComponent,
-        ConfirmationDialog,
+    ConfirmationDialog
   ],
   imports: [
     BrowserModule,
@@ -80,12 +76,12 @@ import { ConfirmationDialog } from "./core/confirmation-dialog/confirmation-dial
     FormsModule,
     MatSlideToggleModule,
     MatProgressSpinnerModule,
-    AutenticacaoModule,
+    AuthenticationModule,
     MessageModule.forRoot(),
     SecurityModule, //TODO conferir a configuração
     SecurityModule.forRoot({
       nameStorage: 'portalSSOSecurityStorage',
-      loginRouter: '/acesso/login',
+      loginRouter: '/access/login',
     }),
     MatCardModule,
     ReactiveFormsModule,

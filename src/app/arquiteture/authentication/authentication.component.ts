@@ -1,33 +1,30 @@
-/* tslint:disable:no-redundant-jsdoc callable-types */
-/* tslint:disable:variable-name */
 import { Router } from '@angular/router';
-import { AutenticacaoService } from './autenticacao.service';
+import { AuthenticationService } from './authentication.service';
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {SecurityService} from "../security/security.service";
 import {User} from "../security/User";
-import {AuthDto} from "../../api/models/auth-dto";
 
 @Component({
-  selector: 'app-autentication',
-  templateUrl: './autenticacao.component.html',
-  styleUrls: ['./autenticacao.component.scss']
+  selector: 'app-authentication',
+  templateUrl: './authentication.component.html',
+  styleUrls: ['./authentication.component.scss']
 })
-export class AutenticacaoComponent implements OnInit {
+export class AuthenticationComponent implements OnInit {
   formGroup!: FormGroup;
   public submitted!: boolean;
 
   /**
-   * Construtor da classe.
+   * Class Constructor.
    *
    * @param securityService
-   * @param autenticationService
-   * @param messageService
+   * @param authenticationService
    * @param router
+   * @param formBuilder
    */
   constructor(
     private securityService: SecurityService,
-    private autenticationService: AutenticacaoService,
+    private authenticationService: AuthenticationService,
     private router: Router,
     private formBuilder: FormBuilder,) {
     this.createForm();
@@ -49,12 +46,10 @@ export class AutenticacaoComponent implements OnInit {
   /**
    * Autentica o Usuário na aplicação conforme os parâmetros informados.
    *
-   * @param usuarioTO
-   * @param form
    */
   public onSubmit(): void {
     if (this.formGroup.valid) {
-      this.autenticationService.login(this.formGroup.value).subscribe(data => {
+      this.authenticationService.login(this.formGroup.value).subscribe(data => {
         const user: User = {
           id: data.id,
           nome: data.nome,
@@ -74,5 +69,4 @@ export class AutenticacaoComponent implements OnInit {
       });
     }
   }
-
 }

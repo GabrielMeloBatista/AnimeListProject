@@ -24,15 +24,15 @@
               </p>
             </mat-card-content>
             <mat-card-actions>
-              <button mat-raised-button color="primary" class="btnEditar" [routerLink]="['/anime/list/',dado.id]">
+              <button mat-raised-button *ngIf="isUser()" color="primary" class="btnEditar" [routerLink]="['/anime/list/',dado.id]">
                 <mat-icon>list</mat-icon>
                 <span>Lista</span>
               </button>
-              <button mat-mini-fab class="btnEditar" [routerLink]="['/anime',dado.id]" color="primary">
+              <button *ngIf="isAdmin()" mat-mini-fab class="btnEditar" [routerLink]="['/anime',dado.id]" color="primary">
                 <mat-icon>edit</mat-icon>
               </button>
               <div style="width: 0.5vw"></div>
-              <button mat-mini-fab (click)="confirmarExcluir(dado)" color="warn">
+              <button mat-mini-fab *ngIf="isAdmin()" (click)="confirmarExcluir(dado)" color="warn">
                 <mat-icon>delete_forever</mat-icon>
               </button>
             </mat-card-actions>
@@ -44,7 +44,7 @@
   <div #final class="final"><h3>Fim da Lista</h3></div>
 </section>
 
-<button mat-raised-button color="primary" [routerLink]="['/anime','novo']" style="margin-top: 2vh">
+<button mat-raised-button *ngIf="isAdmin()" color="primary" [routerLink]="['/anime','novo']" style="margin-top: 2vh">
   <mat-icon>add</mat-icon>
   <span>Adicionar</span>
 </button>

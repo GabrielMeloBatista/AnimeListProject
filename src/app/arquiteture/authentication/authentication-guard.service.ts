@@ -12,7 +12,7 @@ import {SecurityService} from "../security/security.service";
  * @author Guiliano Rangel (UEG)
  */
 @Injectable()
-export class AutenticacaoGuard implements CanActivate {
+export class AuthenticationGuard implements CanActivate {
 
   /**
    * Construtor da classe.

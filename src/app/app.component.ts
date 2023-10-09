@@ -5,7 +5,7 @@ import {LoaderDialogComponent} from "./arquiteture/loader-dialog/loader-dialog.c
 import { ThemeMode, ThemeService } from "./service/theme.service";
 import { OverlayContainer } from "@angular/cdk/overlay";
 import {SecurityService} from "./arquiteture/security/security.service";
-import {AutenticacaoService} from "./arquiteture/autenticacao/autenticacao.service";
+import {AuthenticationService} from "./arquiteture/authentication/authentication.service";
 import {User} from "./arquiteture/security/User";
 import {Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
     private router: Router,
     private dialog: MatDialog,
     private loaderService: LoaderService,
-    private autenticationService: AutenticacaoService,
+    private autenticationService: AuthenticationService,
     private securityService: SecurityService,
     private snackBar: MatSnackBar,
     private messageService: MessageService,
@@ -55,7 +55,6 @@ export class AppComponent implements OnInit {
           this.securityService.init(user);
         },
         (error: any) => {
-          console.log(error);
           this.messageService.addMsgInf(error);
         }
       );
