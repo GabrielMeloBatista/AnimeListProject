@@ -37,6 +37,10 @@ export class AuthenticationComponent implements OnInit {
     });
   }
 
+  public handleError = (controlName: string, errorName: string) => {
+    return this.formGroup.controls[controlName].hasError(errorName);
+  };
+
   /**
    * Inicializa as dependências do componente.
    */
