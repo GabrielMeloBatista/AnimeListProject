@@ -27,8 +27,8 @@ export class ForumComponent implements OnInit {
   acao: string = this.ACAO_INCLUIR;
   id!: number;
 
-  animeListaDataSource: MatTableDataSource<ForumDto> =
-    new MatTableDataSource<ForumDto>([]);
+  forumDtoMatTableDataSource: MatTableDataSource<ForumDto> =
+    new MatTableDataSource<ForumDto>();
 
   constructor(
     private router: Router,
@@ -49,6 +49,7 @@ export class ForumComponent implements OnInit {
       });
     this.createForm();
     this._adapter.setLocale('pt-br');
+    this.id = parseInt(this.route.snapshot.paramMap.get('codigoAnime')|| '');
   }
 
   ngOnInit(): void {
@@ -56,8 +57,8 @@ export class ForumComponent implements OnInit {
   }
 
   private buscarDados() {
-    this.animeListService.listAll().subscribe((data) => {
-      this.animeListaDataSource.data = data;
+    this.animeListService.listAll().subscribe((data: ForumDto[]) => {
+      this.forumDtoMatTableDataSource.data = data.filter(value => value.anime?.id === this.id)
     });
   }
 

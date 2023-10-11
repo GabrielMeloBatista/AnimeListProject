@@ -8,7 +8,9 @@ import { Router } from "@angular/router";
 })
 export class WelcomeComponent {
   images: string[] = [
-    "0", "1", "2", "3"
+    "https://images.alphacoders.com/605/thumbbig-605592.webp",
+    "https://images6.alphacoders.com/133/thumbbig-1330235.webp",
+    "https://images2.alphacoders.com/564/thumbbig-564835.webp",
   ];
   currentIndex: number = 0;
   dynamicText: string[] = [
