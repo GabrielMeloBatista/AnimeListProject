@@ -127,7 +127,7 @@ export class ForumComponent implements OnInit {
   private prepararEdicao() {
     const paramId = this.route.snapshot.paramMap.get('codigo');
     if (paramId) {
-      const codigo = parseInt(paramId);
+      const codigo = this.id;
       console.log('codigo', paramId);
       this.animeService.obterPorId1({ id: codigo }).subscribe((retorno) => {
         this.acao = this.ACAO_EDITAR;
