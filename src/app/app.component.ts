@@ -63,7 +63,6 @@ export class AppComponent implements OnInit {
     this.securityService.onForbidden.subscribe(() => {
       this.messageService.addMsgWarning("Sem acesso");
       //this.router.navigate([this.config.loginRouter]);
-      this.securityService.invalidate();
       this.router.navigate(['/']);
     });
 
