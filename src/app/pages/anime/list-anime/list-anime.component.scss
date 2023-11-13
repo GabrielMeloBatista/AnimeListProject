@@ -2,6 +2,20 @@
   margin-left: 7px;
 }
 
+.flexbox {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 10px;
+  align-content: center;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.item {
+  margin: 10px;
+}
+
 .empty-table {
   padding: 27vh 28vw;
   text-align: center;

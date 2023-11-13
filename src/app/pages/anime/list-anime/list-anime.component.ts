@@ -23,7 +23,6 @@ export class ListAnimeComponent implements OnInit {
   isTableEmpty: boolean = true;
   offset = 0;
   limit = 10;
-  gridSize = 0;
 
   constructor(
     public animeService: AnimeControllerService,
@@ -34,13 +33,12 @@ export class ListAnimeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const options: IntersectionObserverInit = {
+    const options: { root: null; rootMargin: string; threshold: number } = {
       root: null, // null para usar o viewport como área de observação
       rootMargin: "0px",
       threshold: 0.1// Quando 10% da div estiver visível na tela, a função será chamada
     };
     this.buscarDados();
-    this.getGridSize();
 
     this.observer = new IntersectionObserver((entries) => {
       this.handleIntersection(entries);
@@ -56,15 +54,6 @@ export class ListAnimeComponent implements OnInit {
         this.onScroll();
       }
     });
-  }
-
-  @HostListener("window:resize", ["$event"])
-  private getGridSize() {
-    let larguraPagina = window.innerWidth;
-    this.gridSize = Math.round(larguraPagina / 350);
-
-    console.log("Largura da página: " + larguraPagina + " pixels");
-    console.log("Grid definida de: " + this.gridSize + " pixels");
   }
 
   private buscarDados() {

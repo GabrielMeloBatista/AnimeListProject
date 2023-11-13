@@ -7,23 +7,18 @@
         class="form"
       >
         <div class="login-content">
-          <mat-form-field class="example-form-field">
+          <mat-form-field >
             <mat-label >Usuário</mat-label>
             <input matInput formControlName="login" autocomplete="off"
                    placeholder="Usuário" maxlength="20">
-
+            <mat-error>Usuário Obrigatorio</mat-error>
           </mat-form-field>
-          <mat-error *ngIf="handleError('login', 'required')">
-            Usuário e obrigatorio
-          </mat-error>
-          <mat-form-field class="example-form-field">
+          <mat-form-field >
             <mat-label >Senha</mat-label>
             <input matInput formControlName="senha" type="password" title="Senha"
                    placeholder="Senha" >
+            <mat-error>Senha Obrigatorio</mat-error>
           </mat-form-field>
-          <mat-error *ngIf="handleError('senha', 'required')">
-            Senha e obrigatorio
-          </mat-error>
 
           <button mat-raised-button color="primary" type="submit"  title="Entrar">
             <span>Entrar</span>
