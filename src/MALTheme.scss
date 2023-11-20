@@ -21,14 +21,14 @@ $primary-palette: (
 );
 
 $accent-palette: (
-  50: #0a101c,
-  100: #101a2f,
-  200: #111a5f,
-  300: #121a6f,
-  400: #131b8f,
-  500: #141caf,
-  600: #202ebf,
-  700: #202fcf,
+  50: #4f74c8 ,
+  100: #4f74c8 ,
+  200: #4f74c8 ,
+  300: #4f74c8 ,
+  400: #4f74c8 ,
+  500: #4f74c8 ,
+  600: #4f74c8 ,
+  700: #4f74c8 ,
   contrast: (
     50: rgba(#b9bbde, 0.87),
     100: rgba(#dfe0ee, 0.87),
@@ -38,14 +38,14 @@ $accent-palette: (
 );
 
 $warn-palette: (
-  50: #ea247a,
-  100: #ea247a,
-  200: #ea247a,
-  300: #ea247a,
-  400: #ea247a,
-  500: #ea247a,
-  600: #ea247a,
-  700: #ea247a,
+  50: #ad064d,
+  100: #ad064d,
+  200: #ad064d,
+  300: #ad064d,
+  400: #ad064d,
+  500: #ad064d,
+  600: #ad064d,
+  700: #ad064d,
   contrast: (
     50: rgba(#deb9b9, 0.87),
     100: rgba(#eedfdf, 0.87),
@@ -56,7 +56,7 @@ $warn-palette: (
 
 $mal-primary: mat.define-palette($primary-palette);
 $mal-accent: mat.define-palette($accent-palette);
-// $mal-warn: mat.define-palette($warn-palette);
+$mal-warn: mat.define-palette($warn-palette);
 
 $mal-theme-light: mat.define-light-theme((
   color: (
@@ -77,6 +77,10 @@ $mal-theme-dark: mat.define-dark-theme((
   typography: mat.define-typography-config(),
   density: 0,
 ));
+
+.lightMode {
+  @include mat.all-component-colors($mal-theme-light);
+}
 
 // @include mat.all-component-themes($mal-theme-light);
 @include mat.all-component-themes($mal-theme-dark);

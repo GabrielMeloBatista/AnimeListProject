@@ -2,6 +2,10 @@ mat-toolbar {
   color: white;
 }
 
+.example-spacer {
+  flex: 1 1 auto;
+}
+
 mat-sidenav {
   width: 200px;
   border-right: none;
@@ -61,7 +65,6 @@ mat-divider {
 }
 
 a.link-mal-logo {
-  width: 190px;
   text-decoration: none;
   font-size: 1.5rem;
   font-family: MyAnimeListTitle, serif;

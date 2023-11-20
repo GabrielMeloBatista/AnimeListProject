@@ -10,7 +10,7 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatButtonModule } from "@angular/material/button";
 import { MatDividerModule } from "@angular/material/divider";
-import { MatDialogActions, MatDialogModule } from "@angular/material/dialog";
+import { MatDialogModule } from "@angular/material/dialog";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatIconModule } from "@angular/material/icon";
 import { RouterModule } from "@angular/router";
@@ -29,8 +29,6 @@ import { PageNotFoundComponent } from "./core/page-not-found/page-not-found.comp
 import { MatSliderModule } from "@angular/material/slider";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
-import { AlertMessageComponent } from './message/alert-message/alert-message.component';
-import { ConfirmDialogComponent } from './message/confirm-dialog/confirm-dialog.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthenticationModule} from "./arquiteture/authentication/authentication.module";
 import {SecurityModule} from "./arquiteture/security/security.module";
@@ -39,6 +37,8 @@ import {MessageModule} from "./message/message.module";
 import {AppInterceptor} from "./arquiteture/app.interceptor";
 import { MatCardModule } from "@angular/material/card";
 import { ConfirmationDialog } from "./core/confirmation-dialog/confirmation-dialog.component";
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { MatMenuModule } from "@angular/material/menu";
 
 @NgModule({
   declarations: [
@@ -80,11 +80,13 @@ import { ConfirmationDialog } from "./core/confirmation-dialog/confirmation-dial
     MessageModule.forRoot(),
     SecurityModule, //TODO conferir a configuração
     SecurityModule.forRoot({
-      nameStorage: 'portalSSOSecurityStorage',
-      loginRouter: '/access/login',
+      nameStorage: "portalSSOSecurityStorage",
+      loginRouter: "/access/login"
     }),
     MatCardModule,
     ReactiveFormsModule,
+    FlexLayoutModule,
+    MatMenuModule
   ],
   providers: [
     {
