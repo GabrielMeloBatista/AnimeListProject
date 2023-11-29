@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import {AuthDto} from "../../api/models/auth-dto";
 import {AuthApiService} from "../../api/services/auth-api.service";
+import { CredencialRegisterDto } from "../../api/models/credencial-register-dto";
 
 
 /**
@@ -32,6 +33,16 @@ export class AuthenticationService {
   public login(usuarioTO: AuthDto): Observable<any> {
     return this.authApiService.login({body: usuarioTO});
     //return this.http.post(`${environment.urlApi}/auth/login`, usuarioTO);
+  }
+
+  /**
+   * Registra o Usuário na aplicação conforme os parâmetros informados.
+   *
+   * @param usuarioTO
+   */
+  public register(usuarioTO: CredencialRegisterDto): Observable<any> {
+    console.log({body: usuarioTO});
+    return this.authApiService.createUser({body: usuarioTO});
   }
 
   /**

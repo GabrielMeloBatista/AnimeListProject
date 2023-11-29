@@ -61,7 +61,7 @@ export class HomeComponent implements OnInit {
 
   sair() {
     this.securityService.invalidate();
-    this.router.navigate(['/']);
+    this.router.navigate(['/home']);
   }
 
   logar() {
