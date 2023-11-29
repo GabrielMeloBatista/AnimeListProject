@@ -1,0 +1,70 @@
+<div class="container">
+  <mat-card>
+    <mat-card-content>
+      <h1><span>!MyAnimeList</span></h1>
+      <form
+        [formGroup]="formGroupLogin"
+        (ngSubmit)="onSubmitLogin()"
+        class="form"
+        *ngIf="!showRegister"
+      >
+        <div class="login-content">
+          <mat-form-field>
+            <mat-label>Usuário</mat-label>
+            <input matInput formControlName="login" autocomplete="off"
+                   placeholder="Usuário" maxlength="20">
+            <mat-error *ngIf="handleErrorLogin('login', 'required')">Usuário Obrigatorio</mat-error>
+            <mat-error *ngIf="handleErrorLogin('login', 'minLength')">Poucos caracteres</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Senha</mat-label>
+            <input matInput formControlName="senha" type="password" title="Senha"
+                   placeholder="Senha">
+            <mat-error *ngIf="handleErrorLogin('senha', 'required')">Senha Obrigatorio</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="button-field">
+          <button mat-raised-button color="primary" type="submit" title="Entrar">
+            <span>Entrar</span>
+          </button>
+        </div>
+      </form>
+      <form
+          [formGroup]="formGroupRegister"
+          class="form"
+          (ngSubmit)="onSubmitRegister()"
+          *ngIf="showRegister"
+      >
+        <mat-form-field>
+          <mat-label>Nome</mat-label>
+          <input matInput formControlName="nome" placeholder="Nome" type="text" title="Nome">
+          <mat-error *ngIf="handleErrorRegister('nome', 'required')">Nome é Obrigatorio</mat-error>
+
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Login</mat-label>
+          <input matInput formControlName="login" placeholder="Login" type="text" title="login">
+          <mat-error *ngIf="handleErrorRegister('login', 'required')">Login é Obrigatorio</mat-error>
+
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>E-mail</mat-label>
+          <input matInput formControlName="email" placeholder="E-mail" type="email" title="e-mail">
+          <mat-error *ngIf="handleErrorRegister('email', 'required')">E-mail é Obrigatorio</mat-error>
+          <mat-error *ngIf="handleErrorRegister('email', 'email')">E-mail Não é valido</mat-error>
+
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Senha</mat-label>
+          <input matInput formControlName="senha" placeholder="Senha" type="password" title="senha">
+          <mat-error *ngIf="handleErrorRegister('senha', 'required')">Senha é Obrigatorio</mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">Registrar</button>
+      </form>
+      <button mat-raised-button color="accent" type="button" title="Registrar" (click)="showRegisterForm()">
+        <span *ngIf="!showRegister">Registrar</span>
+        <span *ngIf="showRegister">Já possuo uma conta</span>
+      </button>
+    </mat-card-content>
+  </mat-card>
+</div>

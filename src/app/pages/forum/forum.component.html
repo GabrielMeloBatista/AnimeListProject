@@ -1,0 +1,31 @@
+<form
+  [formGroup]="formGroup"
+  (ngSubmit)="onSubmit()"
+  class="form"
+>
+  <div class="form-thingy">
+  <label id="score">Avaliação</label>
+
+  <mat-form-field class="example-form-field">
+    <mat-label>Review</mat-label>
+    <input matInput formControlName="shittyOpinions">
+  </mat-form-field>
+    <mat-error *ngIf="handleError('shittyOpinions', 'required')">
+      Precisa ter algo escrito
+    </mat-error>
+
+  <button mat-raised-button color="primary" type="submit">Salvar</button>
+  </div>
+</form>
+<section class="example-container mat-elevation-z8 tabble-thingy" tabindex="0">
+  <table mat-table [dataSource]="forumDtoMatTableDataSource">
+    <!-- Position Column -->
+    <ng-container matColumnDef="Review">
+      <th mat-header-cell *matHeaderCellDef> Review </th>
+      <td mat-cell *matCellDef="let element"> {{element.shittyOpinions}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="colunasMostrar; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: colunasMostrar;"></tr>
+  </table>
+</section>

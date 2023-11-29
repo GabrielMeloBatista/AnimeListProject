@@ -1,0 +1,86 @@
+@use '@angular/material' as mat;
+@import '@angular/material/theming';
+
+@include mat.core();
+
+$primary-palette: (
+  50: #2e51a2,
+  100: #2e51a2,
+  200: #2e51a2,
+  300: #2e51a2,
+  400: #2e51a2,
+  500: #2e51a2,
+  600: #2e51a2,
+  700: #2e51a2,
+  contrast: (
+    50: rgba(#121212, 0.90),
+    100: rgba(#141414, 0.60),
+    200: rgba(#181818, 0.40),
+    300: #202020,
+  )
+);
+
+$accent-palette: (
+  50: #4f74c8 ,
+  100: #4f74c8 ,
+  200: #4f74c8 ,
+  300: #4f74c8 ,
+  400: #4f74c8 ,
+  500: #4f74c8 ,
+  600: #4f74c8 ,
+  700: #4f74c8 ,
+  contrast: (
+    50: rgba(#b9bbde, 0.87),
+    100: rgba(#dfe0ee, 0.87),
+    200: rgba(#dddee5, 0.87),
+    300: white,
+  )
+);
+
+$warn-palette: (
+  50: #ad064d,
+  100: #ad064d,
+  200: #ad064d,
+  300: #ad064d,
+  400: #ad064d,
+  500: #ad064d,
+  600: #ad064d,
+  700: #ad064d,
+  contrast: (
+    50: rgba(#deb9b9, 0.87),
+    100: rgba(#eedfdf, 0.87),
+    200: rgba(#e5dddd, 0.87),
+    300: white,
+  )
+);
+
+$mal-primary: mat.define-palette($primary-palette);
+$mal-accent: mat.define-palette($accent-palette);
+$mal-warn: mat.define-palette($warn-palette);
+
+$mal-theme-light: mat.define-light-theme((
+  color: (
+    primary: $mal-primary,
+    accent: $mal-accent,
+    // warn: $mal-warn,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0,
+));
+
+$mal-theme-dark: mat.define-dark-theme((
+  color: (
+    primary: $mal-primary,
+    accent: $mal-accent,
+    //warn: $mal-warn,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0,
+));
+
+.lightMode {
+  @include mat.all-component-colors($mal-theme-light);
+}
+
+// @include mat.all-component-themes($mal-theme-light);
+@include mat.all-component-themes($mal-theme-dark);

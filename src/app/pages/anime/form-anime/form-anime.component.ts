@@ -58,7 +58,7 @@ export class FormAnimeComponent {
 
   private realizarInclusao() {
     console.log("Dados:", this.formGroup.value);
-    this.animeService.incluir({body: this.formGroup.value})
+    this.animeService.incluir1({body: this.formGroup.value})
       .subscribe(retorno => {
         console.log("Retorno:", retorno);
         this.confirmarAcao(retorno, this.ACAO_INCLUIR);

@@ -1,42 +1,54 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatTabsModule } from '@angular/material/tabs';
-import { HomeComponent } from './core/home/home.component';
-import {HttpClientModule} from "@angular/common/http";
-import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatSidenavModule} from "@angular/material/sidenav";
-import {MatButtonModule} from "@angular/material/button";
-import {MatDividerModule} from "@angular/material/divider";
-import {MatDialogModule} from "@angular/material/dialog";
-import {MatSnackBarModule} from "@angular/material/snack-bar";
-import {MatIconModule} from "@angular/material/icon";
-import { ConfirmationDialog } from './core/confirmation-dialog/confirmation-dialog.component';
-import {RouterModule} from "@angular/router";
-import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule} from "@angular/material/form-field";
-import {AnimeModule} from "./pages/anime/anime.module"
-import {MatSelectModule} from "@angular/material/select";
-import {MatInputModule} from "@angular/material/input";
-import {MatOptionModule} from "@angular/material/core";
-import { HelpComponent } from './pages/help/help.component';
-import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
-import { LoaderDialogComponent } from './arquiteture/loader-dialog/loader-dialog.component';
-import {LoaderModule} from "./arquiteture/loader/loader.module";
-import {MatRadioModule} from '@angular/material/radio';
-
-  "" +
-"anime/anime.module";
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { MatTabsModule } from "@angular/material/tabs";
+import { HomeComponent } from "./core/home/home.component";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatButtonModule } from "@angular/material/button";
+import { MatDividerModule } from "@angular/material/divider";
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatIconModule } from "@angular/material/icon";
+import { RouterModule } from "@angular/router";
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule } from "@angular/material/form-field";
+import { AnimeModule } from "./pages/anime/anime.module";
+import { MatSelectModule } from "@angular/material/select";
+import { MatInputModule } from "@angular/material/input";
+import { MatOptionModule } from "@angular/material/core";
+import { HelpComponent } from "./pages/help/help.component";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { LoaderDialogComponent } from "./arquiteture/loader-dialog/loader-dialog.component";
+import { LoaderModule } from "./arquiteture/loader/loader.module";
+import { MatRadioModule } from "@angular/material/radio";
+import { WelcomeComponent } from "./pages/welcome/welcome.component";
+import { PageNotFoundComponent } from "./core/page-not-found/page-not-found.component";
+import { MatSliderModule } from "@angular/material/slider";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatSlideToggleModule } from "@angular/material/slide-toggle";
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {AuthenticationModule} from "./arquiteture/authentication/authentication.module";
+import {SecurityModule} from "./arquiteture/security/security.module";
+import {SecurityInterceptor} from "./arquiteture/security/security.interceptor";
+import {MessageModule} from "./message/message.module";
+import {AppInterceptor} from "./arquiteture/app.interceptor";
+import { MatCardModule } from "@angular/material/card";
+import { ConfirmationDialog } from "./core/confirmation-dialog/confirmation-dialog.component";
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { MatMenuModule } from "@angular/material/menu";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ConfirmationDialog,
     HelpComponent,
-    LoaderDialogComponent
+    LoaderDialogComponent,
+    WelcomeComponent,
+    PageNotFoundComponent,
+    ConfirmationDialog
   ],
   imports: [
     BrowserModule,
@@ -59,11 +71,43 @@ import {MatRadioModule} from '@angular/material/radio';
     MatProgressSpinnerModule,
     AnimeModule,
     LoaderModule,
-    MatRadioModule
+    MatRadioModule,
+    MatSliderModule,
+    FormsModule,
+    MatSlideToggleModule,
+    MatProgressSpinnerModule,
+    AuthenticationModule,
+    MessageModule.forRoot(),
+    SecurityModule, //TODO conferir a configuração
+    SecurityModule.forRoot({
+      nameStorage: "portalSSOSecurityStorage",
+      loginRouter: "/access/login"
+    }),
+    MatCardModule,
+    ReactiveFormsModule,
+    FlexLayoutModule,
+    MatMenuModule
   ],
   providers: [
-    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: { appearance: 'outline' },
+    },
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: { appearance: 'outline' },
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AppInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: SecurityInterceptor,
+      multi: true,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

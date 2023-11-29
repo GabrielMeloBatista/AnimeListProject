@@ -4,8 +4,10 @@ import { NgModule, ModuleWithProviders, SkipSelf, Optional } from '@angular/core
 import { HttpClient } from '@angular/common/http';
 import { ApiConfiguration, ApiConfigurationParams } from './api-configuration';
 
-import { AnimeListControllerService } from './services/anime-list-controller.service';
+import { ForumControllerService } from './services/forum-controller.service';
+import { AuthApiService } from './services/auth-api.service';
 import { AnimeControllerService } from './services/anime-controller.service';
+import { PersonalListControllerService } from './services/personal-list-controller.service';
 
 /**
  * Module that provides all services and configuration.
@@ -15,8 +17,10 @@ import { AnimeControllerService } from './services/anime-controller.service';
   exports: [],
   declarations: [],
   providers: [
-    AnimeListControllerService,
+    ForumControllerService,
+    AuthApiService,
     AnimeControllerService,
+    PersonalListControllerService,
     ApiConfiguration
   ],
 })

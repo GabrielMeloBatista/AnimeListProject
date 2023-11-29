@@ -1,9 +1,8 @@
 /* tslint:disable */
 /* eslint-disable */
 import { Anime } from './anime';
-export interface AnimeListDto {
-  anime?: Array<Anime>;
-  id?: number;
+export interface PersonalListListaDto {
+  anime?: Anime;
   score?: number;
   watched?: number;
 }
