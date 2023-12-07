@@ -8,7 +8,8 @@ import {
   ConfirmationDialog,
   ConfirmationDialogResult
 } from "../../../core/confirmation-dialog/confirmation-dialog.component";
-import {SecurityService} from "../../../arquiteture/security/security.service";
+import { SecurityService } from "../../../arquiteture/security/security.service";
+import { formatDate } from "@angular/common";
 
 @Component({
   selector: "app-list-anime",
@@ -116,16 +117,22 @@ export class ListAnimeComponent implements OnInit {
   }
 
   onScroll(): void {
-    console.log("Limit: ", this.limit,"offset:", this.offset);
+    console.log("Limit: ", this.limit, "offset:", this.offset);
     this.offset += this.limit; // Aumenta o limite para exibir mais itens
     this.buscarDados(); // Carrega mais itens
   }
 
-  isAdmin() : boolean {
+  isAdmin(): boolean {
     return this.securityService.hasRoles("ROLE_ADMIN");
   }
 
-  isUser() : boolean {
+  isUser(): boolean {
     return this.securityService.isValid();
+  }
+
+  formatDate(stringDate: string | undefined): Date | undefined {
+    if (stringDate !== undefined)
+      return new Date(stringDate);
+    return undefined;
   }
 }

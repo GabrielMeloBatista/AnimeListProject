@@ -39,6 +39,7 @@ import { MatCardModule } from "@angular/material/card";
 import { ConfirmationDialog } from "./core/confirmation-dialog/confirmation-dialog.component";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatMenuModule } from "@angular/material/menu";
+import { MatAutocompleteModule } from "@angular/material/autocomplete";
 
 @NgModule({
   declarations: [
@@ -86,7 +87,8 @@ import { MatMenuModule } from "@angular/material/menu";
     MatCardModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    MatMenuModule
+    MatMenuModule,
+    MatAutocompleteModule
   ],
   providers: [
     {

@@ -4,21 +4,32 @@
   class="form"
 >
   <div class="form-thingy">
-  <label id="score">Avaliação</label>
+  <label id="score">Avaliação do {{anime?.nome}}</label>
 
   <mat-form-field class="example-form-field">
     <mat-label>Review</mat-label>
-    <input matInput formControlName="shittyOpinions">
+    <input matInput formControlName="shittyOpinions" readonly="{{!securityService.hasRoles('ROLE_TIPO_INCLUIR')}}">
   </mat-form-field>
-    <mat-error *ngIf="handleError('shittyOpinions', 'required')">
+    <mat-error *ngIf="handleError('shittyOpinions', 'min')">
       Precisa ter algo escrito
     </mat-error>
+
+    <label id="example-radio-group-label">Nota</label>
+    <mat-radio-group
+      aria-labelledby="example-radio-group-label"
+      class="example-radio-group"
+      formControlName="score"
+      >
+      <mat-radio-button class="example-radio-button" disabled="{{!securityService.hasRoles('ROLE_TIPO_INCLUIR')}}" *ngFor="let score of avaliableScores" [value]="score.avaliacao">
+        {{score.nome}}
+      </mat-radio-button>
+    </mat-radio-group>
 
   <button mat-raised-button color="primary" type="submit">Salvar</button>
   </div>
 </form>
 <section class="example-container mat-elevation-z8 tabble-thingy" tabindex="0">
-  <table mat-table [dataSource]="forumDtoMatTableDataSource">
+  <table mat-table *ngIf="forumDtoMatTableDataSource.data.length > 0" [dataSource]="forumDtoMatTableDataSource">
     <!-- Position Column -->
     <ng-container matColumnDef="Review">
       <th mat-header-cell *matHeaderCellDef> Review </th>

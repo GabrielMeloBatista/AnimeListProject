@@ -27,8 +27,8 @@
                  width="245">
             <mat-card-content>
               <p>
-                Um(a) {{dado.generoID}} que teve seu primeiro episodio lançado no
-                dia {{dado.dataLacamento}}
+                Um(a) anime de {{dado.generoID}} que teve seu primeiro episodio lançado no
+                dia {{formatDate(dado.dataLacamento)?.toLocaleDateString("pt-BR")}}
               </p>
             </mat-card-content>
             <mat-card-actions>

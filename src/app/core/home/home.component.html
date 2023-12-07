@@ -11,6 +11,24 @@
     </a>
     <span class="example-spacer"></span>
     <div fxShow="true" fxHide.lt-md="true">
+      <mat-form-field class="search-box" color="warn">
+        <mat-label>Search</mat-label>
+        <input type="text"
+               placeholder="ex. One Piece"
+               aria-label="Search"
+               matInput
+               [formControl]="myControl"
+               [matAutocomplete]="auto"
+               [(ngModel)]="value">
+        <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option.nome" (click)="searchInput(option)">
+            {{option.nome}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
       <a mat-button routerLink="/anime">
         <mat-icon>theaters</mat-icon>
         <span>Anime</span>
@@ -40,6 +58,24 @@
   <mat-sidenav-container fxFlexFill>
     <mat-sidenav #sidenav fxLayout="column" mode="over" opened="false" fxHide.gt-sm="true">
       <div fxLayout="column">
+        <mat-form-field class="search-box" color="primary">
+          <mat-label>Search</mat-label>
+          <input type="text"
+                 placeholder="ex. One Piece"
+                 aria-label="Search"
+                 matInput
+                 [formControl]="myControl"
+                 [matAutocomplete]="auto"
+                 [(ngModel)]="value">
+          <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option.nome" (click)="searchInput(option)">
+              {{option.nome}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
         <a mat-button routerLink="/anime">
           <mat-icon>theaters</mat-icon>
           <span>Anime</span>

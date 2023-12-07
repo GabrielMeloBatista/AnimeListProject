@@ -101,6 +101,7 @@ export class AuthenticationComponent implements OnInit {
           };
         }
       );
+      this.showRegisterForm();
     }
   }
 
